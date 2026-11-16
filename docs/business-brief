@@ -1,0 +1,236 @@
+# Digital Wallet Fraud Risk & Financial Performance Intelligence
+
+**Project Type:** End-to-End Data Analytics Portfolio Case Study  
+**Dataset:** Onyx DataDNA — African Gig-Economy and Digital Wallet Risk  
+**Business Scenario:** PayPesa (illustrative challenge setting)  
+**Markets:** Ghana, Kenya, Nigeria and South Africa  
+**Analysis Period:** January 2023 – December 2024  
+**Tools:** MySQL, Python, Power BI and GitHub  
+**Project Status:** Business Understanding and Project Scoping
+
+---
+
+## 1. Business Context
+
+PayPesa is the digital-wallet business used in the Onyx DataDNA challenge scenario. The dataset represents transactions associated with gig-economy workers across four African markets.
+
+The data covers payment amounts, transaction outcomes, fraud-related indicators, recorded losses, and contextual information about workers, payment channels, markets and dates.
+
+Digital-wallet providers must maintain reliable payment services while managing suspicious activities, financial exposure and operational disruptions.
+
+However, high transaction volumes do not necessarily indicate high fraud risk, and a fraud-flagged transaction does not automatically represent confirmed fraud.
+
+This project will use validated data to investigate payment risks, transaction performance and potential financial exposure.
+
+## 2. Business Problem Statement
+
+The Head of Risk and Head of Payments need to determine which markets, payment channels, transaction types and worker segments require the greatest management attention.
+
+Without a consistent framework for examining fraud indicators, financial losses, disputes, reversals and transaction outcomes, management may allocate investigative resources based on incomplete or misleading information.
+
+**Core Business Question:**
+
+How can PayPesa use transaction-level data to identify areas of elevated financial-risk exposure and payment-performance challenges, and determine where management should prioritize investigations and operational improvements?
+
+The analysis will distinguish recorded risk indicators from verified fraud outcomes and document any limitations that affect management decisions.
+
+## 3. Project Objectives
+
+### Primary Objective
+
+Develop a reproducible financial-risk and payment-performance intelligence framework that supports evidence-based management decisions.
+
+### Specific Objectives
+
+1. **Identify risk exposure:** Investigate where fraud-flagged transactions and recorded financial losses are concentrated across markets, channels and worker segments.
+
+2. **Evaluate payment reliability:** Examine transaction completion, failure, dispute and reversal patterns to identify areas requiring operational investigation.
+
+3. **Assess financial exposure:** Analyze transaction values and recorded losses to support financial-risk monitoring and reconciliation.
+
+4. **Ensure data reliability:** Validate transaction records, data relationships and KPI definitions before presenting findings.
+
+5. **Support business decisions:** Translate analytical evidence into prioritized recommendations with documented limitations.
+
+## 4. Stakeholders
+
+| Stakeholder | Business Interest | Decision Supported |
+|---|---|---|
+| **Head of Risk** | Fraud indicators, financial exposure and risk concentration | Prioritize investigations and evaluate risk controls |
+| **Head of Payments / Operations** | Transaction outcomes, service reliability and channel performance | Identify payment processes requiring improvement |
+| **Finance Lead** | Transaction values, recorded losses and financial reconciliation | Validate financial exposure |
+| **Compliance / Customer Operations** | Worker verification, KYC and customer impact | Assess appropriate risk-control measures |
+| **Data / Business Intelligence Team** | Data quality, consistent metrics and reporting | Develop reliable analytical reporting |
+
+**Primary Decision Owner:** Head of Risk
+
+## 5. Research Questions
+
+### RQ1 — Fraud-Risk Exposure
+
+Which markets, payment channels, transaction types and worker segments have higher fraud-flag rates and recorded financial-loss exposure?
+
+**Evidence required:**
+- Fraud indicators
+- Recorded loss amounts
+- Transaction counts
+- Market and channel characteristics
+- Worker segments
+
+**Management decision:** Determine where risk investigations and additional validation should be prioritized.
+
+### RQ2 — Payment Reliability
+
+Which payment channels, markets and transaction types experience less favorable transaction completion, failure, dispute or reversal outcomes?
+
+**Evidence required:**
+- Transaction outcomes
+- Dispute indicators
+- Reversal indicators
+- Processing times
+- Transaction volumes
+
+**Management decision:** Identify payment channels or operational processes requiring further diagnosis.
+
+### RQ3 — Financial Exposure
+
+How do transaction values and recorded financial losses vary across markets, transaction types and time periods?
+
+**Evidence required:**
+- Transaction amounts in USD
+- Recorded fraud losses
+- Transaction dates
+- Markets
+- Transaction outcomes
+
+**Management decision:** Identify areas where Finance and Risk should focus reconciliation and control-review resources.
+
+### Additional Exploratory Questions
+
+The project may also investigate whether account tenure, KYC tier, worker segment, transaction amount and velocity score are associated with fraud flags or payment outcomes.
+
+These relationships will be treated as hypotheses to investigate rather than predetermined findings.
+
+## 6. Dataset Description and Analytical Grain
+
+The dataset consists of one transaction fact table and four dimension tables.
+
+| Table | Grain | Primary Key |
+|---|---|---|
+| `fact_transactions` | One recorded digital-wallet transaction per row | `transaction_id` |
+| `dim_worker` | One worker profile per row | `worker_id` |
+| `dim_channel` | One payment-channel record per row | `channel_id` |
+| `dim_market` | One market record per row | `market_id` |
+| `dim_date` | One calendar date per row | `date_id` |
+
+The transaction fact table connects to the dimension tables using `worker_id`, `channel_id`, `market_id` and `date_id`.
+
+**Primary Analytical Grain:** One recorded digital-wallet transaction.
+
+A worker may have multiple transactions. Therefore, transaction counts must not be confused with unique worker counts.
+
+## 7. Project Scope
+
+### In Scope
+
+- Importing and profiling the five supplied tables.
+- Validating primary keys, foreign keys and relationships.
+- Investigating missing values, inconsistent fields and data-quality issues.
+- Analyzing fraud flags and recorded financial-loss exposure.
+- Comparing transaction outcomes across channels, markets and worker segments.
+- Performing relevant SQL and statistical analyses.
+- Developing a validated Power BI dashboard.
+- Preparing evidence-based business recommendations.
+
+### Out of Scope
+
+- Calculating verified company revenue or profitability without fee and cost information.
+- Treating fraud flags as independently confirmed fraud.
+- Deploying a production fraud-detection system.
+- Claiming causal relationships without supporting evidence.
+- Claiming actual financial savings from untested interventions.
+- Evaluating real-world compliance outcomes without independent evidence.
+
+## 8. Proposed Key Performance Indicators
+
+The following KPI definitions are preliminary and will be validated during data profiling.
+
+| KPI | Proposed Definition |
+|---|---|
+| **Transaction Count** | Count of distinct transaction IDs |
+| **Transaction Value (USD)** | Total recorded USD transaction value for a defined population |
+| **Completion Rate** | Completed eligible transactions divided by total eligible transactions |
+| **Fraud-Flag Rate** | Fraud-flagged eligible transactions divided by total eligible transactions |
+| **Dispute Indicator Rate** | Transactions marked as disputed divided by eligible transactions |
+| **Reversal Indicator Rate** | Transactions marked as reversed divided by eligible transactions |
+| **Recorded Fraud-Loss Exposure** | Sum of valid recorded fraud-loss amounts |
+| **Loss-to-Transaction-Value Ratio** | Valid recorded loss exposure divided by comparable transaction value |
+
+Every KPI will have a documented formula, denominator, inclusion criteria, exclusions and limitations.
+
+Transaction value will not be described as provider revenue.
+
+## 9. Assumptions, Risks and Data Limitations
+
+The project recognizes the following limitations:
+
+1. The dataset was supplied through the Onyx DataDNA Challenge, and accompanying schema documentation describes generated fields. Its figures should not be presented as verified operating results from a real financial institution.
+
+2. Fraud-flagged transactions are not automatically confirmed cases of fraud.
+
+3. Transaction amounts represent recorded payment values and do not establish company fee revenue, operating costs or profit.
+
+4. Transaction outcomes, dispute flags, reversal flags and loss amounts may require reconciliation.
+
+5. The transaction-level dataset does not provide a complete chronological event history for transaction authorization, fraud investigation, dispute resolution or reversal processing.
+
+6. Worker attributes may represent snapshots rather than their historical state at transaction time.
+
+7. Statistical associations do not automatically establish causation.
+
+8. Where data definitions remain uncertain, analytical findings will include appropriate caveats and sensitivity checks.
+
+## 10. Project Success Criteria
+
+The project will be considered successful when:
+
+- All five tables are imported and reconciled against the original files.
+- Primary and foreign keys pass documented validation tests.
+- Data-quality issues and decisions are clearly recorded.
+- Every KPI has a reproducible definition.
+- The three research questions are investigated using appropriate SQL and statistical methods.
+- Power BI results reconcile with independently validated calculations.
+- Findings distinguish observed evidence from assumptions.
+- Recommendations identify practical management actions and their limitations.
+- The GitHub repository documents a reproducible analytical workflow.
+
+## 11. Planned Deliverables
+
+| Deliverable | File or Folder |
+|---|---|
+| Business problem and project scope | `docs/project_brief.md` |
+| Business process reconstruction | `docs/business_process_understanding.md` |
+| Data dictionary | `docs/data_dictionary.md` |
+| Data-quality findings and decisions | `docs/data_quality_log.md` |
+| KPI definitions | `docs/kpi_definitions.md` |
+| SQL scripts and analytical queries | `sql/` |
+| Python statistical analysis | `notebooks/` |
+| Power BI dashboard and screenshots | `powerbi/` |
+| Executive findings and recommendations | `reports/` |
+| Overall project documentation | `README.md` |
+
+## 12. Questions Requiring Stakeholder Clarification
+
+Before making final business recommendations, the following questions should be addressed:
+
+1. What precisely qualifies a transaction as fraud-flagged?
+2. Does `fraud_loss_usd` represent a realized loss, estimated exposure or another financial measure?
+3. Which field should be considered authoritative when transaction outcomes disagree with dispute or reversal flags?
+4. Do worker and channel attributes describe their status at the time of a transaction or a later snapshot?
+5. Which operational constraints, investigation thresholds and customer-impact considerations should guide management priorities?
+
+Where authoritative answers are unavailable, the project will explicitly document assumptions and limitations.
+
+---
+
+**Project Principle:** The business brief defines what the investigation aims to discover and which management decisions it should inform. Findings and recommendations will be developed only after data validation and analysis.
