@@ -177,6 +177,7 @@ The project recognizes the following limitations:
 1. The dataset was supplied through the Onyx DataDNA Challenge, and accompanying schema documentation describes generated fields. Its figures should not be presented as verified operating results from a real financial institution.
 
 2. Fraud-flagged transactions are not automatically confirmed cases of fraud.
+The dataset does not document the rules or thresholds used to assign fraud flags. Consequently, associations between transaction characteristics and fraud flags cannot be interpreted as evidence of what triggered the flags.
 
 3. Transaction amounts represent recorded payment values and do not establish company fee revenue, operating costs or profit.
 
